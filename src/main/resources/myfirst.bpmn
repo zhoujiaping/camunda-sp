@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1lcjkmo" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+  <bpmn:process id="Process_0kzd3hj" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1nrxkq4</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_02e1jgm">
+      <bpmn:incoming>Flow_0bwev26</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1nrxkq4" sourceRef="StartEvent_1" targetRef="Activity_169fcw2" />
+    <bpmn:sequenceFlow id="Flow_0icgkx5" sourceRef="Activity_169fcw2" targetRef="Activity_115k7jo" />
+    <bpmn:sequenceFlow id="Flow_1unzfup" sourceRef="Activity_115k7jo" targetRef="Activity_1h3ebpl" />
+    <bpmn:sequenceFlow id="Flow_0bwev26" sourceRef="Activity_1h3ebpl" targetRef="Event_02e1jgm" />
+    <bpmn:serviceTask id="Activity_169fcw2" name="打开冰箱" camunda:delegateExpression="${step1}">
+      <bpmn:incoming>Flow_1nrxkq4</bpmn:incoming>
+      <bpmn:outgoing>Flow_0icgkx5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_115k7jo" name="把大象放冰箱里" camunda:delegateExpression="${step2}">
+      <bpmn:incoming>Flow_0icgkx5</bpmn:incoming>
+      <bpmn:outgoing>Flow_1unzfup</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1h3ebpl" name="关闭冰箱" camunda:delegateExpression="${step3}">
+      <bpmn:incoming>Flow_1unzfup</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bwev26</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0kzd3hj">
+      <bpmndi:BPMNEdge id="Flow_1nrxkq4_di" bpmnElement="Flow_1nrxkq4">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="250" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0icgkx5_di" bpmnElement="Flow_0icgkx5">
+        <di:waypoint x="350" y="117" />
+        <di:waypoint x="420" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1unzfup_di" bpmnElement="Flow_1unzfup">
+        <di:waypoint x="520" y="117" />
+        <di:waypoint x="580" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bwev26_di" bpmnElement="Flow_0bwev26">
+        <di:waypoint x="680" y="117" />
+        <di:waypoint x="762" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0qvl8li_di" bpmnElement="Event_02e1jgm">
+        <dc:Bounds x="762" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1v2noxs_di" bpmnElement="Activity_169fcw2">
+        <dc:Bounds x="250" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xzitks_di" bpmnElement="Activity_115k7jo">
+        <dc:Bounds x="420" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_16b59h1_di" bpmnElement="Activity_1h3ebpl">
+        <dc:Bounds x="580" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,41 @@
+jdk8+
+spring4.3.6+
+maven3.3+
+
+see https://docs.camunda.org/get-started/spring/project-setup/
+
+一 project setup
+1 Create a new Maven Project
+2 Add Camunda Platform & Spring Framework Dependencies
+3 Add web.xml File for Bootstrapping the Spring Container
+4 Add a Spring Application Context XML Configuration File
+二 Embedded Process Engine Configuration
+Configure an Embedded Process Engine
+三 Invoking a Spring Bean from a BPMN 2.0 Service Task
+Add a Spring Bean Service Task
+Model an Executable BPMN 2.0 Process
+(https://camunda.com/download/modeler/)
+Use Spring Auto-Deployment for BPMN 2.0 Processes
+Start a Process Instance from a Spring Bean
+Invoke a Spring Bean from a BPMN 2.0 Service Task
+
+
+see https://blog.csdn.net/wxz258/article/details/109048648
+相关概念
+Process Definition即流程定义。
+Process Instance即流程实例。
+Execution即流程执行实例。
+Activity Instance即活动实例。
+Process Variable即流程变量。
+Tasklist即任务列表，也就是待办任务。当流程节点是人工任务类型时，才可产生任务列表。
+Job and Job Definition即作业执行器，Camunda流程引擎包含一个名为Job Executor的组件。作业执行器是一个调度组件，负责执行异步后台工作。
+
+event事件
+gateway网关
+task任务
+subProcess
+DataObjectReference
+DataStoreReference
+Pool
+Group
+

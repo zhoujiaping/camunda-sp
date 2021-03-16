@@ -1,8 +1,8 @@
 //see at https://plugins.gradle.org/plugin
 // fatJar https://www.mkyong.com/gradle/gradle-create-a-jar-file-with-dependencies/
 plugins {
-	id "org.gretty" version "2.3.1"
-	id 'groovy'
+    id "org.gretty" version "2.3.1"
+    id 'groovy'
     id 'java'
 }
 group = 'org.wt'
@@ -17,67 +17,68 @@ targetCompatibility = 1.8
 
 
 task "create-dirs" doLast {
-	sourceSets*.java.srcDirs*.each { 
-		it.mkdirs()
-	}		
-	sourceSets*.resources.srcDirs*.each{ 
-		it.mkdirs() 
-	} 
+    sourceSets*.java.srcDirs*.each {
+        it.mkdirs()
+    }
+    sourceSets*.resources.srcDirs*.each {
+        it.mkdirs()
+    }
 }
 
 repositories {
-	//mavenCentral()
+    //mavenCentral()
     //jcenter()
-	//maven{url 'C:/Users/你的用户名/.m2/repository'}
-	maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-	maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    //maven{url 'C:/Users/你的用户名/.m2/repository'}
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
 }
 
-ext{
-	springVersion = '4.3.6.RELEASE'
+ext {
+    springVersion = '4.3.6.RELEASE'
+    camundaVersion = '7.14.0'
 }
 
 dependencies {
-	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
-	compile (
-		'javax.servlet:jstl:1.1.2',
-		"org.springframework:spring-webmvc:$springVersion",
-		"org.springframework:spring-web:$springVersion",
-		"org.springframework:spring-context:$springVersion",
-		"org.springframework:spring-beans:$springVersion",
-		"org.springframework:spring-aop:$springVersion",
-		"org.springframework:spring-aop:$springVersion",
-		"org.springframework:spring-core:$springVersion",
-		"ch.qos.logback:logback-core:1.1.2",
-		"ch.qos.logback:logback-classic:1.1.2",
-		"com.alibaba:fastjson:1.2.29",
-		"javax.annotation:javax.annotation-api:1.3"
-	)
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile(
+            'javax.servlet:jstl:1.1.2',
+            "org.springframework:spring-webmvc:$springVersion",
+            "org.springframework:spring-web:$springVersion",
+            "org.springframework:spring-context:$springVersion",
+            "org.springframework:spring-beans:$springVersion",
+            "org.springframework:spring-aop:$springVersion",
+            "org.springframework:spring-core:$springVersion",
+            "org.springframework:spring-orm:${springVersion}",
+            "org.camunda.bpm:camunda-engine-spring:${camundaVersion}",
+            "org.springframework:spring-jdbc:${springVersion}",
+            "org.springframework:spring-tx:${springVersion}",
+            "org.springframework:spring-aspects:${springVersion}",
+            "ch.qos.logback:logback-core:1.1.2",
+            "ch.qos.logback:logback-classic:1.1.2",
+            "com.alibaba:fastjson:1.2.29",
+            "javax.annotation:javax.annotation-api:1.3"
+    )
     compile 'org.slf4j:slf4j-api:1.7.24'
     testCompile 'junit:junit:4.12'
-	compile "org.springframework:spring-aspects:${springVersion}"
-	compile 'org.aspectj:aspectjrt:1.5.4'
-	compile 'org.eclipse.jetty.aggregate:jetty-all:9.4.6.v20170531'
-	compile 'org.eclipse.jetty:apache-jsp:9.4.6.v20170531'
-	compile 'org.eclipse.jetty:jetty-server:9.4.12.RC2'
-	compile 'org.eclipse.jetty:jetty-webapp:9.4.12.RC2'
-	compile 'org.codehaus.groovy:groovy-all:2.3.11'
-	compile 'mysql:mysql-connector-java:5.1.46'
-	compile('org.apache.httpcomponents:httpclient:4.2.2')
-	compile('org.codehaus.groovy.modules.http-builder:http-builder:0.7')
-    compile 'com.craigburke.document:core:0.5.0'
-    compile 'com.craigburke.document:pdf:0.5.0'
-	compile 'com.craigburke.document:word:0.5.0'
+    compile 'org.aspectj:aspectjrt:1.5.4'
+    compile 'org.eclipse.jetty.aggregate:jetty-all:9.4.6.v20170531'
+    compile 'org.eclipse.jetty:apache-jsp:9.4.6.v20170531'
+    compile 'org.eclipse.jetty:jetty-server:9.4.12.RC2'
+    compile 'org.eclipse.jetty:jetty-webapp:9.4.12.RC2'
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'mysql:mysql-connector-java:5.1.46'
+    compile('org.apache.httpcomponents:httpclient:4.2.2')
 
-	//compile 'org.apache.commons:commons-compress:1.20'
+    compile "org.camunda.bpm:camunda-engine:${camundaVersion}"
+    compile 'com.h2database:h2:1.4.190'
 }
 /*
 命令行启动jetty: gradle appRun
  */
 gretty {
-	httpPort = 8088
-	//servletContainer = 'jetty9'
-	contextPath = project.name
+    httpPort = 8088
+    //servletContainer = 'jetty9'
+    contextPath = project.name
 }
 
 
